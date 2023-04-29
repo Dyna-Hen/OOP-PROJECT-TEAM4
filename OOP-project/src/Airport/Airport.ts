@@ -1,7 +1,11 @@
 import { Gate } from "../Gate/Gate";
 import { Flight, meals } from "../Flight/Flight";
+import { Passanger } from "../Passanger/Passanger";
 
 export class Airport {
+    addPassenger(p2: Passanger) {
+        throw new Error("Method not implemented.");
+    }
 
     gates: Gate[] = [];
     constructor(public name: string) {}
@@ -20,26 +24,5 @@ export class Airport {
     }
   }
 
-let airport = new Airport("ASAP");
 
-let gateA1 = new Gate("AA1");
-let gateB2 = new Gate("BB2");
-
-airport.addGate(gateA1);
-airport.addGate(gateB2);
-
-let flight1 = new Flight("A10","10 PM ","1 PM","12-05-2023",meals.DIARYFREE);
-let flight2 = new Flight("D11", "3 AM", "12 PM","00-00-00",meals.VEGETARIAN);
-
-gateA1.assignFlight(flight1);
-gateB2.assignFlight(flight2);
-
-let flightNumber = "A10";
-let gate = airport.getGateByFlightNumber(flightNumber);
-
-if (gate) {
-  console.log("Your flight " + flightNumber +" is waiting at gate " + gate.number);
-} else {
-  console.log("We could not find your flight " + flightNumber);
-}
 

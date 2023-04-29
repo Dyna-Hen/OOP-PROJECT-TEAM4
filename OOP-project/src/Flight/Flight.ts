@@ -1,4 +1,4 @@
-import { ticket } from "../Booking/Booking";
+import { Tickets } from "../Booking/Booking";
 import { Passanger } from "../Passanger/Passanger";
 
 export enum meals {

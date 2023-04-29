@@ -1,4 +1,4 @@
-export enum ticket {
+export enum Tickets {
     SINGLETICKET,
     RETURNTICKET
 }
@@ -23,46 +23,42 @@ export class Booking {
         protected referenceNumber: string, 
         public seats: Seat, 
         public trips: Trip, 
+        protected ticket: Tickets,
         // private boardingPasses: BoardingPass, 
 
     ) {}
 
-    addPassenger(passanger: Passanger){
-        this.passangers.push(passanger);
+    getSeat(){
+        return this.seats
     }
 
-    getPassengerDetails(bookingID: number){
-        if(bookingID == this.bookingID){
-            for(let passInfo of this.passangers){
-                return passInfo;
-            }
-            // return this.seats;
-        }
-        return "Not found!"
-    };
+    getFlight(){
+        return this.flights
+    }
 
     getTrip(): Trip {
         return this.trips;
     };
 
-    addFlight(flight: Flight){
-        this.flights.push(flight);
+    getTickets(){
+        return this.ticket
+    }
+    addPassenger(passanger:Passanger){ 
+        return this.passangers.push(passanger) 
+    } 
+    getPassengerDetails(idOfPassenger: number){ 
+        let detailOfPassenger : Passanger[]=[] 
+        for (let passanger of this.passangers){ 
+            if(idOfPassenger == passanger.getID()){ 
+                detailOfPassenger.push(passanger) 
+                // return passanger.getID() 
+            } 
+        } 
+        return detailOfPassenger 
     }
 }
 
-let seat1 = new Seat("10A",seattypes.WINDOW);
-let trip1 = new Trip("Kyoto","7 Hours");
 
-let booking1 = new Booking(1,300,"USD","11-23-2002",10,"8 PM", "10A",seat1,trip1);
-let booking2 = new Booking(2,600,"USD","11-23-2002",20,"10 PM", "11A",seat1,trip1);
-
-let p1 = new Passanger(12345,"20/April/2002","10-04-2023","JJ Kiko","jj@gmail.com",89676767,"pp",genders.MALE,"2 baggage",meals.DIARYFREE);
-let p2 = new Passanger(77777,"20/April/2002","10-04-2023","kk","kk@gmail.com",1111,"sl",genders.FEMALE,"9 baggage",meals.KOSHER);
-
-booking1.addPassenger(p1);
-booking2.addPassenger(p2);
-
-console.log(booking2.getPassengerDetails(2));
 
 // let myPassengerTrip = new Trip("Japan", "7 hours");
 // console.log("She goes to : " + myPassengerTrip.destination + " and spend for : " + myPassengerTrip.duration);
