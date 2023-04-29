@@ -1,33 +1,58 @@
-import { Airplane } from "../Airplane/Airplane";
-import { Passanger } from "../Passanger/Passanger";
+import { Airplane } from "../Airplane/Airplane"; 
+import { Employee } from "../Employee/Employee";
+import { Passanger } from "../Passanger/Passanger"; 
+ 
+export class Airline { 
+    public airplanes: Airplane[] = []; 
+    employees: Employee[]=[];
+    public passangers: Passanger[] = []; 
+    constructor 
+    ( 
+        public airlineName: string, airplanes: Airplane
+    ) {} 
+     
+    addAirline(airplane: Airplane) { 
+        return this.airplanes.push(airplane); 
+    } 
+ 
+    addPassanger(passanger: Passanger) { 
+        return this.passangers.push(passanger); 
+    } 
+ 
+    getPassanger(){ 
+        return this.passangers; 
+    } 
 
-export class Airline {
-    public airplanes: Airplane[] = [];
-    public passangers: Passanger[] = [];
-    constructor
-    (
-        public airlineName: string
-    ) {}
-    
-    addAirline(airplane: Airplane) {
-        return this.airplanes.push(airplane);
-    }
+    addEmployee(employee: Employee){
+        this.employees.push(employee);
+    };
 
-    addPassanger(passanger: Passanger) {
-        return this.passangers.push(passanger);
-    }
+    getEmplyee(){
+        return this.employees;
+    };
 
-    getPassanger(){
-        return this.passangers;
-    }
+    getEmployeeSalary(){
 
-    countReturnTicket(){
-        let numPassanger =0
-        let allPassanger = this.passangers;
-        for(let passanger of allPassanger){
-           return passanger
-            
+        let totalSalaryEmployee: number = 0;
+
+        for(let employee of this.employees){
+            totalSalaryEmployee += employee.salary
         }
-        return numPassanger
+        return totalSalaryEmployee;
     }
+ 
+    // now 
+    countReturnTicket(){ 
+        let numPassanger =0 
+        let allPassanger = this.passangers; 
+        for(let passanger of allPassanger){ 
+            for(let booking of passanger.booking){ 
+                if( booking.getTickets() === 1){ 
+                    numPassanger +=1 
+                } 
+            } 
+            return numPassanger 
+        } 
+    } 
+    //  
 }

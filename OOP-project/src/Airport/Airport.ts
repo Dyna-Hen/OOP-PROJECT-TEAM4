@@ -1,15 +1,32 @@
 import { Gate } from "../Gate/Gate";
 import { Flight, meals } from "../Flight/Flight";
 import { Passanger } from "../Passanger/Passanger";
+import { Booking } from "../Booking/Booking";
 
 export class Airport {
-    addPassenger(p2: Passanger) {
-        throw new Error("Method not implemented.");
-    }
+    
 
     gates: Gate[] = [];
+    public passangers: Passanger[]=[];
+    public bookings: Booking[]=[];
     constructor(public name: string) {}
   
+    addPassenger(passenger: Passanger) {
+      this.passangers.push(passenger)
+    }
+
+    getPassanger() {
+      return this.passangers;
+    }
+
+    addBooking(booking: Booking) {
+      return this.bookings.push(booking)
+    }
+
+    getBookings(){
+      return this.bookings
+    }
+
     addGate(gate: Gate) {
       this.gates.push(gate);
     }

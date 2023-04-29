@@ -21,7 +21,8 @@ export class Employee extends Person{
         address: string, 
         gender: genders, 
         flights: Flight, 
-        skills: skills
+        skills: skills,
+        public salary: number
     )
     {
         super
